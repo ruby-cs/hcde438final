@@ -1,16 +1,19 @@
-# React + Vite
+# HCDE 438 Final Project
+## Memorji: An Emoji Sequence Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### About
+Players must memorize and repeat a randomly generated sequence of emojis. Each round will become increasingly
+difficult as a new emoji is added to the sequence. The player must recall the full pattern correctly
+to continue.
 
-Currently, two official plugins are available:
+### Goal
+This game will provide an engaging and entertaining way to help users strengthen memory and
+pattern recognition skills.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Main Functions/Features
+The web application will feature a starting screen, a page for gameplay, and a scoreboard page.
+The user will press a “play” button to start the game. Emojis will appear on the screen, one by
+one, to create a sequence the player must memorize. The sequence will disappear and the
+buttons with the displayed emojis will appear on the screen for the player to press in the order
+they remember. If the player loses, the game restarts. If they guess correctly, they continue to
+the next level. A leaderboard will display the top 10 scores in the leaderboard tab
