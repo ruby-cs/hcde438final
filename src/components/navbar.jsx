@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const navbar = () => (
+const Navbar = () => (
     <nav>
-        <Link to="/">Play</Link><br/>
-        <Link to="/">Leaderboard</Link><br/>
-        <Link to="/profile">Profile</Link><br/>
-        <button>Sign Out</button>
+        <Link to="/">Play</Link>
+        <Link to="/leaderboard">Leaderboard</Link>
+        <Link to="/profile">Profile</Link>
     </nav>
 );
 
-export default navbar;
+export default Navbar;
