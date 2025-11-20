@@ -1,39 +1,51 @@
 import React from 'react';
-import APODImage from "../components/APODImage.jsx";
 import { useState, useEffect } from "react";
-// const dummyData = {
-//     title: "Astronomy Picture of the Day",
-//     url: "https://placehold.co/600x400"
-// };
-
+import { useNavigate } from "react-router-dom";
+import '../App.css';
+import '../index.css';
 
 const Home = () => {
+    const [emoji, setEmoji] = useState(null);
+    const navigate = useNavigate();
 
-    const [apodData, setApodData] = useState(null)
+    const decodeHtmlEmoji = (htmlCodeArray) => {
+        if (!htmlCodeArray || htmlCodeArray.length === 0) return "";
+        const code = htmlCodeArray[0].replace(/[&#;]/g, "");
+        return String.fromCodePoint(parseInt(code, 10));
+    };
+
     useEffect(() => {
-        const fetchAPOD = async () => {
-
+        const fetchEmoji = async () => {
             try {
-                const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY') // insert emoji API
+                const response = await fetch("https://emojihub.yurace.pro/api/all");
                 const data = await response.json();
-                setApodData(data)
-            } catch(err){
+                const randomEmoji = data[Math.floor(Math.random() * data.length)];
+                setEmoji(randomEmoji);
+            } catch (err) {
                 console.log(err.message);
             }
-        }
-        fetchAPOD();
-    },[])
+        };
 
-    return(
-        <div>
-            <h1>Memoji</h1>
-            {apodData && (
+        fetchEmoji();
+    }, []);
+
+    return (
+        <div className="home-container">
+            <h1 className="home-title">Memorji</h1>
+            <p>Sign In</p>
+            {emoji ? (
                 <>
-                    <APODImage title={apodData.title} url={apodData.url} />
-                    <button>Start</button>
-                </>)
-            }
-        </div>);
+                    <p className="emoji-display">
+                        {decodeHtmlEmoji(emoji.htmlCode)}
+                    </p>
+
+                    <button onClick={() => navigate("/game")}>Start</button>
+                </>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
 };
 
 export default Home;
