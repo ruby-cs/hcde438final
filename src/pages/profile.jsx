@@ -1,6 +1,8 @@
 import React from 'react';
+import '../index.css';
+import '../App.css';
 
-const profile = () => (
+const Profile = () => (
     <div>
         <h1>Profile Information</h1>
         <ul>
@@ -8,10 +10,11 @@ const profile = () => (
                 <p>Username</p>
             </li>
             <li>
-                <p>Highest Score</p>
+                <p>Personal Best</p>
             </li>
         </ul>
+        <button>Sign Out</button>
     </div>
 )
 
-export default profile;
+export default Profile;
