@@ -1,6 +1,8 @@
 import React from 'react';
+import '../index.css';
+import '../App.css';
 
-const profile = () => (
+const Leaderboard = () => (
     <div>
         <h1>Leaderboard</h1>
         <ul>
@@ -14,4 +16,4 @@ const profile = () => (
     </div>
 )
 
-export default profile;
+export default Leaderboard;
