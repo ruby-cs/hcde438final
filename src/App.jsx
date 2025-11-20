@@ -3,14 +3,16 @@ import Navbar from './components/Navbar.jsx';
 import Home from './pages/Home.jsx';
 import Profile from './pages/Profile.jsx';
 import Leaderboard from "./pages/Leaderboard.jsx";
+import Game from "./pages/Game.jsx";
 
 const App = () => (
-    <div>
+    <div id="app-container">
         <Navbar />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/game" element={<Game />} />
         </Routes>
     </div>
 )
