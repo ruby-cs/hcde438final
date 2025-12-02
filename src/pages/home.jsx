@@ -73,6 +73,12 @@ const Home = () => {
     <div className="home-container">
       <h1 className="home-title">Memorji</h1>
 
+      {emoji ? (
+        <p className="emoji-display">{decodeHtmlEmoji(emoji.htmlCode)}</p>
+      ) : (
+        <p>Loading...</p>
+      )}
+
       <form onSubmit={addUsername} className="username-form">
         <input
           type="text"
@@ -84,15 +90,12 @@ const Home = () => {
         <button type="submit" className="add-button">Start</button>
       </form>
 
-      {emoji ? (
-        <p className="emoji-display">{decodeHtmlEmoji(emoji.htmlCode)}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-
       {username && username !== "Guest" && (
         <p className="welcome-text">Welcome, <strong>{username}</strong>!</p>
       )}
+
+      <br></br>
+      <p>This is Memoji, a sequence memory game! Memorize the randomly generated sequence of emojis and repeat it using the provided buttons. For each correct round, an additional emoji will be added to the sequence. If you input the sequence incorrectly, the game restarts. Try to get the highest score!</p>
     </div>
   );
 };
