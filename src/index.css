@@ -123,3 +123,40 @@ nav button:hover {
     background-color: #f9f9f9;
   }
 }
+
+.username-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.username-input {
+  width: 260px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.username-input:focus {
+  border-color: #7a5af5;
+  box-shadow: 0 0 6px rgba(122, 90, 245, 0.4);
+}
+
+.username-form .add-button {
+  background-color: #7a5af5;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.25s ease;
+}
+
+.username-form .add-button:hover {
+  background-color: #6849d7;
+}
