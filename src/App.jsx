@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx';
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Game from "./pages/Game.jsx";
 
+// Main application routing
 const App = () => (
     <div id="app-container">
         <Navbar />

@@ -6,24 +6,28 @@ import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 import '../App.css';
 import '../index.css';
 
+// Home page with username input and random emoji display
 const Home = () => {
   const [emoji, setEmoji] = useState(null);
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
+  // Decode HTML emoji code to actual emoji character
   const decodeHtmlEmoji = (htmlCodeArray) => {
     if (!htmlCodeArray || htmlCodeArray.length === 0) return "";
     const code = htmlCodeArray[0].replace(/[&#;]/g, "");
     return String.fromCodePoint(parseInt(code, 10));
   };
 
+  // Saved username retrieval
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
     if (savedUsername) {
       setUsername(savedUsername);
     }
   }, []);
-
+  
+  // Fetch random emoji
   useEffect(() => {
     const fetchEmoji = async () => {
       try {
@@ -39,6 +43,7 @@ const Home = () => {
     fetchEmoji();
   }, []);
 
+  // Add username to storage, then navigate to game page
   const addUsername = async (e) => {
     e.preventDefault();
 
@@ -69,6 +74,7 @@ const Home = () => {
     }
   };
 
+  // Home page UI
   return (
     <div className="home-container">
       <h1 className="home-title">Memorji</h1>

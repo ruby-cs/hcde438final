@@ -5,10 +5,12 @@ import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import "../index.css";
 import "../App.css";
 
+// Leaderboard page for user's scores
 const Leaderboard = () => {
   const [scores, setScores] = useState([]);
   const username = localStorage.getItem("username");
 
+  // Fetch top 10 scores for the user from Firestore
   useEffect(() => {
     if (!username || username === "Guest") return; // no scores for guests
 
@@ -28,14 +30,17 @@ const Leaderboard = () => {
     fetchScores();
   }, [username]);
 
+  // If no username, user needs to enter one to save/view scores
   if (!username) {
     return <p>Please enter a username to see your leaderboard.</p>;
   }
 
+  // If guest, user needs to enter username to save/view scores
   if (username === "Guest") {
     return <p>You are playing as a guest. Enter a username to save and view your scores.</p>;
   }
 
+  // Leaderboard UI
   return (
     <div className="leaderboard-container">
       <h1>{username}'s Top 10 Scores</h1>

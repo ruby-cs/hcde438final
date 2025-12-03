@@ -8,6 +8,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
+// Function to save user score to Firestore, Guests are not saved
 const saveUserScore = async (username, score) => {
   if (!username || username === "Guest") return;
 
@@ -25,6 +26,7 @@ const saveUserScore = async (username, score) => {
   }
 };
 
+// Interactions (username storage, emoji sequence, score, buttons, etc.)
 const Game = () => {
   const username = localStorage.getItem("username") || "Guest";
   const [emojiList, setEmojiList] = useState([]);
@@ -37,12 +39,14 @@ const Game = () => {
   const [playTick, setPlayTick] = useState(0);
   const [score, setScore] = useState(0);
 
+  // Decode HTML emoji code to actual emoji character
   const decodeHtmlEmoji = (htmlCodeArray) => {
     if (!htmlCodeArray || !htmlCodeArray.length) return "";
     const code = htmlCodeArray[0].replace(/[&#;]/g, "");
     return String.fromCodePoint(parseInt(code, 10));
   };
 
+  // Fetch emoji data
   useEffect(() => {
     const fetchEmojis = async () => {
       try {
@@ -59,6 +63,7 @@ const Game = () => {
     fetchEmojis();
   }, []);
 
+  // Generate button emojis and start game when emoji list is ready
   useEffect(() => {
     if (!loading && emojiList.length > 0) {
       generateButtonSet();
@@ -76,7 +81,8 @@ const Game = () => {
 
     startNewGame(decoded);
   };
-
+  
+  // Start a new game with an initial random emoji
   const startNewGame = (buttons) => {
     const first = buttons[Math.floor(Math.random() * buttons.length)];
     const initial = [first];
@@ -84,6 +90,7 @@ const Game = () => {
     playSequence(initial);
   };
 
+  // Play the emoji sequence to the user
   const playSequence = async (seq) => {
     setShowingSequence(true);
 
@@ -99,6 +106,7 @@ const Game = () => {
     setShowingSequence(false);
   };
 
+  // Handle user clicking an emoji button, if user is correct, continue game, else new game
   const handleUserClick = (emoji) => {
     if (showingSequence) return;
 
@@ -126,6 +134,7 @@ const Game = () => {
     }
   };
 
+  // Game UI
   return (
     <div className="game-container">
       <h1>Memorji</h1>
